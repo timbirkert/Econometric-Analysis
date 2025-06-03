@@ -19,7 +19,7 @@ We applied a [staggered Difference-in-Differences](code/Ökonometrische_Analyse.
    - Two-way fixed effects (country and time),  
    - Clustered standard errors at the country level.
 
-# Event Study
+### Event Study
 An event study was performed to track the treatment effect across different time leads and lags relative to treatment adoption.
 <p align="center">
   <img src="plots/Eventstudy.png" alt="Event Study" width="60%" />
