@@ -1,0 +1,60 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+
+\section*{Difference-in-Differences (DiD) Analysis}
+
+\subsection*{Model Specification}
+
+We estimate the following fixed-effects DiD model with clustered standard errors at the country level:
+
+\[
+\log(\text{Average\_price}_{it}) = \beta_0 + \beta_1 \cdot \text{post}_t + \alpha_i + \lambda_t + \epsilon_{it}
+\]
+
+where
+\begin{itemize}
+    \item $\log(\text{Average\_price}_{it})$ is the log of the average price for country $i$ in year $t$,
+    \item $\text{post}_t$ is a dummy variable indicating the post-treatment period,
+    \item $\alpha_i$ are country fixed effects,
+    \item $\lambda_t$ are year fixed effects,
+    \item $\epsilon_{it}$ is the error term clustered at the country level.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Estimation Results}
+
+\begin{table}[ht]
+\centering
+\caption{OLS Fixed-Effects Regression with Clustered Standard Errors (Cluster: Countries)}
+\begin{tabular}{lcccc}
+\toprule
+Variable & Estimate & Std. Error & t value & $p$-value \\
+\midrule
+post & -0.0611 & 0.0914 & -0.669 & 0.507 \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize{Significance codes: *** $p<0.001$, ** $p<0.01$, * $p<0.05$, . $p<0.1$}} \\
+\multicolumn{5}{l}{Observations: 1,101 \quad Countries (Fixed Effects): 45 \quad Years (Fixed Effects): 26} \\
+\multicolumn{5}{l}{RMSE: 0.1514 \quad Adjusted $R^2$: 0.6156 \quad Within-$R^2$: 0.0023} \\
+\end{tabular}
+\label{tab:did_results}
+\end{table}
+
+\bigskip
+
+\subsection*{Interpretation}
+
+The estimated coefficient for the variable \texttt{post} is \(-0.0611\) and is statistically insignificant (\(p = 0.507\)). This suggests that there is no significant change in the logged average price after treatment when controlling for country and year fixed effects as well as clustered standard errors.
+
+The model includes 1,101 observations from 45 countries over 26 years. The relatively low within-$R^2$ of 0.0023 indicates that the model explains little variation within countries over time. The adjusted overall $R^2$ of 0.6156 reflects the variation explained by all explanatory variables including fixed effects.
+
+The results imply that the "post" effect is not robustly detectable in this setting. Further investigations could include additional control variables or alternative model specifications.
+
+\end{document}
+
